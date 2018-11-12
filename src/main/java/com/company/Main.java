@@ -1,11 +1,14 @@
 package com.company;
-import java.util.Scanner;
-import com.company.person;
+//import java.util.Scanner;
+//import com.company.person;
+import org.joda.time.LocalDate;
 
 public class Main {
 
     public static void main(String[] args) {
-person P1 = new person();
-
+        LocalDate birthday = new LocalDate(1998, 02, 5);
+//person P1 = new person(1, "Max", "dun", birthday);
+        person P1 = new person();
+        System.out.print(P1.getAge());
     }
 }
