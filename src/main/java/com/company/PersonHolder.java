@@ -3,6 +3,10 @@ public class PersonHolder {
     int counter = 0;
     person mas[];
 
+    /**
+     * Метод добавления очередной персоны
+     * @param P
+     */
     public void push(person P)
     {
         if(counter == 0) {
@@ -13,32 +17,40 @@ public class PersonHolder {
             else
         {
             person temp[] = new person[counter + 1];
-            temp = mas.clone();
-            temp[counter + 1] = P;
-            mas = temp.clone();
+            System.arraycopy(mas,0,temp,0,counter);
+            //for(int i = 0; i< counter;i++) temp[i] = mas[i];
+            temp[counter] = P;
+            mas = temp;
             counter ++ ;
         }
     }
-
+/**
+ *Метод, позволяющий получить данные о персоне с индексом
+ * @param Index
+ */
     public person GetPersonWithI(int Index)
     {
         return mas[Index];
     }
+
+    /**
+     * Метод, убирающий персону из холдера, возвращая ее данные
+     * @param Index
+     * @return
+     */
     public person pop(int Index)
     {
         person temp[] = new person[counter -1];
-        person Temp = new person();
-        for(int i = 0; i< counter ; i++)
-        {
-            if( i==Index )
-            {
-                Temp = mas[i];
-                temp[i] = mas[i+1];
-            }
-            else
-                temp[i] = mas[i];
+        person Temp = mas[Index];
+        for(int i =0; i < counter-1 ; i++){
+        if(i == Index)
+            if(i != counter)
+            temp[i] = mas[i + 1];
+        else
+            temp[i] = mas[i];
 
         }
+        mas = temp;
 
         return Temp;
     }
