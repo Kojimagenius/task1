@@ -18,6 +18,7 @@ public class person {
     public void setDateOfBirth(LocalDate dateOfBirth) {
         DateOfBirth = dateOfBirth;
     }
+    public LocalDate getDateOfBirth() { return DateOfBirth;}
 /**
 
  */

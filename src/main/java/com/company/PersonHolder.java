@@ -1,7 +1,14 @@
 package com.company;
+
+import org.joda.time.LocalDate;
+
 public class PersonHolder {
-    int counter = 0;
+    int counter;
     person mas[];
+    /**
+     * сортировщик холдера
+     */
+    Sorter mySorter;
 
     /**
      * Метод добавления очередной персоны
@@ -23,6 +30,7 @@ public class PersonHolder {
             mas = temp;
             counter ++ ;
         }
+        mySorter.Sort(mas);
     }
 /**
  *Метод, позволяющий получить данные о персоне с индексом
@@ -53,6 +61,30 @@ public class PersonHolder {
         mas = temp;
 
         return Temp;
+    }
+
+    person search(String str)
+    {
+        person temp;
+        for(int i = 0; i < counter; i++)
+        {
+        if(mas[i].getName() == str)
+            return mas[i];
+        }
+        return null;
+    }
+    person search(LocalDate Birthday)
+    {
+        for(int i = 0; i < counter; i++)
+            if (mas[i].getDateOfBirth().compareTo(Birthday) == 0) return mas[i];
+        return null;
+    }
+
+    PersonHolder(Sorter srt)
+    {
+        mySorter = srt;
+        counter = 0;
+        mas = null;
     }
 
 
