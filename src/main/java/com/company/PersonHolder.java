@@ -3,8 +3,8 @@ package com.company;
 import org.joda.time.LocalDate;
 
 public class PersonHolder {
-    int counter;
-    person mas[];
+    private int counter;
+    private person mas[];
     /**
      * сортировщик холдера
      */
@@ -31,6 +31,23 @@ public class PersonHolder {
             counter ++ ;
         }
         mySorter.Sort(mas);
+    }
+    public void delete(int Index)
+    {
+        person temp[] = new person[counter-1];
+        for(int i = 0; i < counter-1; i++)
+        {
+            if(i == Index)
+                temp[i] = mas[i + 1];
+            else
+                temp[i] = mas[i];
+        }
+        mas = temp;
+        counter--;
+    }
+    public int GetLength()
+    {
+        return mas.length;
     }
 /**
  *Метод, позволяющий получить данные о персоне с индексом
@@ -59,6 +76,7 @@ public class PersonHolder {
 
         }
         mas = temp;
+        counter--;
 
         return Temp;
     }

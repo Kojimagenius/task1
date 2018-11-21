@@ -9,7 +9,7 @@ public class person {
     /**
      * Вычисляемое поле возраста
      */
-    private Years age;
+    private int age;
 
     /**
      * svoistva dlya pervichnoy proverki
@@ -22,7 +22,7 @@ public class person {
 /**
 
  */
-    public Years getAge() {
+    public int getAge() {
         return age;
     }
 
@@ -39,7 +39,7 @@ public class person {
     {
         name = Name;
         DateOfBirth = dateOfBirth;
-        age =  Years.yearsBetween(DateOfBirth, LocalDate.now());
+        age =  Years.yearsBetween(DateOfBirth, LocalDate.now()).getYears();
 
 
 
