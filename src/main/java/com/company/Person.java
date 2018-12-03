@@ -3,14 +3,9 @@ import org.joda.time.LocalDate;
 import org.joda.time.Years;
 
 
-public class person {
+public class Person {
     private String name;
     private LocalDate DateOfBirth ;
-    /**
-     * Вычисляемое поле возраста
-     */
-    private int age;
-
     /**
      * svoistva dlya pervichnoy proverki
      * @param dateOfBirth
@@ -23,7 +18,7 @@ public class person {
 
  */
     public int getAge() {
-        return age;
+        return Years.yearsBetween(DateOfBirth, LocalDate.now()).getYears();
     }
 
     public String getName() { return name;}
@@ -35,17 +30,12 @@ public class person {
     /**
     konstruktor
      */
-    person( String Name, LocalDate dateOfBirth )
+    Person(String Name, LocalDate dateOfBirth )
     {
         name = Name;
         DateOfBirth = dateOfBirth;
-        age =  Years.yearsBetween(DateOfBirth, LocalDate.now()).getYears();
-
-
-
-
     }
-    person()
+    Person()
     { }
 
 }

@@ -8,13 +8,13 @@ public class bubleTest {
 
     @org.junit.Test
     public void sort() {
-        comparator cmp = new NameComparator();
-        Sorter test = new hbrush (cmp);
-        person P1 = new person("Ax Dun", new LocalDate(1998, 02, 5));
-        person P2 = new person("Ciri", new LocalDate(1963,11,14));
-        person P3 = new person("Biri", new LocalDate(1900,11,14));
-        person arr1[] = new person[3];
-        person arr2[] = new person[3];
+        Comparator cmp = new NameComparator();
+        Sorter test = new Hbrush(cmp);
+        Person P1 = new Person("Ax Dun", new LocalDate(1998, 02, 5));
+        Person P2 = new Person("Ciri", new LocalDate(1963,11,14));
+        Person P3 = new Person("Biri", new LocalDate(1900,11,14));
+        Person arr1[] = new Person[3];
+        Person arr2[] = new Person[3];
         arr1[0] = P1;
         arr1[1] = P2;
         arr1[2] = P3;

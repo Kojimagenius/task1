@@ -1,10 +1,8 @@
 package com.company;
 
-import org.joda.time.LocalDate;
-
-public class buble implements Sorter
+public class Buble implements Sorter
         {
-            comparator cmp;
+            Comparator cmp;
 
 
             /**
@@ -13,9 +11,9 @@ public class buble implements Sorter
              * @param first
              * @param second
              */
-            private void swap(person arr[], int first, int second)
+            private void swap(Person arr[], int first, int second)
             {
-                person temp;
+                Person temp;
                 if(arr[first] != arr[second])
                 {
                     temp = arr[first];
@@ -28,7 +26,7 @@ public class buble implements Sorter
              * Метод сортировкi
              * Возвращает отсортированный массив
              */
-            public void Sort(person arr[])
+            public void Sort(Person arr[])
             {
                 for(int j = arr.length - 1; j !=0; j--){
                 for(int i = 0; i < j; i ++)
@@ -40,7 +38,7 @@ public class buble implements Sorter
 
 
             }
-            buble(comparator cmp)
+            Buble(Comparator cmp)
             {
             this.cmp = cmp;
 

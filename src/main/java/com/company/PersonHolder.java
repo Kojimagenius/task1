@@ -4,7 +4,7 @@ import org.joda.time.LocalDate;
 
 public class PersonHolder {
     private int counter;
-    private person mas[];
+    private Person mas[];
     /**
      * сортировщик холдера
      */
@@ -14,16 +14,16 @@ public class PersonHolder {
      * Метод добавления очередной персоны
      * @param P
      */
-    public void push(person P)
+    public void push(Person P)
     {
         if(counter == 0) {
-            mas = new person[1];
+            mas = new Person[1];
             mas[counter] = P;
             counter ++;
         }
             else
         {
-            person temp[] = new person[counter + 1];
+            Person temp[] = new Person[counter + 1];
             System.arraycopy(mas,0,temp,0,counter);
             //for(int i = 0; i< counter;i++) temp[i] = mas[i];
             temp[counter] = P;
@@ -34,7 +34,7 @@ public class PersonHolder {
     }
     public void delete(int Index)
     {
-        person temp[] = new person[counter-1];
+        Person temp[] = new Person[counter-1];
         for(int i = 0; i < counter-1; i++)
         {
             if(i == Index)
@@ -53,7 +53,7 @@ public class PersonHolder {
  *Метод, позволяющий получить данные о персоне с индексом
  * @param Index
  */
-    public person GetPersonWithI(int Index)
+    public Person GetPersonWithI(int Index)
     {
         return mas[Index];
     }
@@ -63,10 +63,10 @@ public class PersonHolder {
      * @param Index
      * @return
      */
-    public person pop(int Index)
+    public Person pop(int Index)
     {
-        person temp[] = new person[counter -1];
-        person Temp = mas[Index];
+        Person temp[] = new Person[counter -1];
+        Person Temp = mas[Index];
         for(int i =0; i < counter-1 ; i++){
         if(i == Index)
             if(i != counter)
@@ -81,20 +81,33 @@ public class PersonHolder {
         return Temp;
     }
 
-    person search(String str)
+    Person[] search(String str)
     {
-        person temp;
+        Person temp [] = new Person[counter/2] ;
+        Person ref = new Person(str, new LocalDate());
+        NameComparator cmp= new NameComparator();
+        int j = 0;
         for(int i = 0; i < counter; i++)
         {
-        if(mas[i].getName() == str)
-            return mas[i];
+        if(cmp.compare(ref, mas[i]) == 0){
+            if(counter/2 > j)
+                temp[j++] = mas[i];
+        else
+            {
+                Person temp1[] = new Person[temp.length + 1];
+                temp = temp1;
+                temp[j++] = mas[i];
+            }
         }
-        return null;
+        }
+        return temp;
     }
-    person search(LocalDate Birthday)
+    Person[] search(LocalDate Birthday)
     {
+        Person temp[] = new Person[counter/2];
+
         for(int i = 0; i < counter; i++)
-            if (mas[i].getDateOfBirth().compareTo(Birthday) == 0) return mas[i];
+            if (mas[i].getDateOfBirth().compareTo(Birthday) == 0) return temp;
         return null;
     }
 
