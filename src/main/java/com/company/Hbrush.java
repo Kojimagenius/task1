@@ -1,10 +1,8 @@
 package com.company;
 
 public class Hbrush implements Sorter {
-    Comparator cmp;
     Hbrush(Comparator cmp)
     {
-        this.cmp = cmp;
     }
     Hbrush(){}
 
@@ -18,7 +16,7 @@ public class Hbrush implements Sorter {
             arr[second] = temp;
         }
     }
-    public void Sort(Person[]arr)
+    public void Sort(Person[]arr, Comparator cmp)
     {
         int gap = arr.length;
         boolean swaped = true;

@@ -1,13 +1,12 @@
 package com.company;
 
 public class Shaker implements Sorter {
-    Comparator cmp;
     Shaker(Comparator cmp)
     {
-        this.cmp = cmp;
+
     }
     Shaker(){}
-    public void Sort(Person[] arr)
+    public void Sort(Person[] arr, Comparator cmp)
     {
        int left = 0;
        int right = arr.length -1;

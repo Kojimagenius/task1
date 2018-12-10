@@ -1,8 +1,8 @@
 package com.company;
 
-import org.joda.time.LocalDate;
-
 import org.apache.log4j.Logger;
+
+
 
 public class PersonHolder {
     private static Logger log = Logger.getLogger(PersonHolder.class.getName());
@@ -10,8 +10,9 @@ public class PersonHolder {
     private Person mas[];
     //logger
     /**
-     * сортировщик холдера
+     * сортировщик холдера {@link Sorter}
      */
+    @AutoInject
     Sorter mySorter;
 
     /**
@@ -35,7 +36,7 @@ public class PersonHolder {
             mas = temp;
             counter ++ ;
         }
-        mySorter.Sort(mas);
+        mySorter.Sort(mas, new BirthdayComparator());
     }
     public void delete(int Index)
     {
@@ -87,30 +88,15 @@ public class PersonHolder {
         return Temp;
     }
 
-    public <T> Person[]  search(T str)
+    public <T> PersonHolder  search(Checker ch, Object value)
     {
-        log.debug("Searching for person with param " + str.toString());
-        Person temp [] = new Person[counter/2] ;
-        Checker ch = null;
-        if(str instanceof String )
-         ch = new NameChecker();
-        else
-            ch = new DateCheker();
-        int j = 0;
-        for(int i = 0; i < counter; i++)
+        log.debug("Searching for person with param " + value.toString());
+        PersonHolder holder = new PersonHolder();
+        for(Person person: mas)
         {
-        if(ch.check(mas[i], str) == true){
-            if(counter/2 > j)
-                temp[j++] = mas[i];
-        else
-            {
-                Person temp1[] = new Person[temp.length + 1];
-                temp = temp1;
-                temp[j++] = mas[i];
-            }
+            if(ch.check(person, value)) holder.push(person);
         }
-        }
-        return temp;
+        return holder;
     }
    /* Person[] search(LocalDate Birthday)
     {
@@ -128,6 +114,6 @@ public class PersonHolder {
         counter = 0;
         mas = null;
     }
-
+    PersonHolder(){}
 
 }

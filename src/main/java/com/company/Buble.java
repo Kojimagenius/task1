@@ -2,7 +2,6 @@ package com.company;
 
 public class Buble implements Sorter
         {
-            Comparator cmp;
 
 
             /**
@@ -26,7 +25,7 @@ public class Buble implements Sorter
              * Метод сортировкi
              * Возвращает отсортированный массив
              */
-            public void Sort(Person arr[])
+            public void Sort(Person arr[], Comparator cmp)
             {
                 for(int j = arr.length - 1; j !=0; j--){
                 for(int i = 0; i < j; i ++)
@@ -40,7 +39,5 @@ public class Buble implements Sorter
             }
             Buble(Comparator cmp)
             {
-            this.cmp = cmp;
-
             }
         }
