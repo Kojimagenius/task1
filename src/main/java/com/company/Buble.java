@@ -37,7 +37,7 @@ public class Buble implements Sorter
 
 
             }
-            Buble(Comparator cmp)
+            Buble()
             {
             }
         }

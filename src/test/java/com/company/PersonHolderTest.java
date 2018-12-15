@@ -10,7 +10,7 @@ public class PersonHolderTest {
     @Test
     public void push() {
         Comparator cmp = new NameComparator();
-        Sorter srt = new Buble(cmp);
+        Sorter srt = new Buble();
         PersonHolder ph1 = new PersonHolder(srt);
         Person P1 = new Person("Ax Dun", new LocalDate(1998, 02, 5));
         ph1.push(P1);
@@ -18,13 +18,12 @@ public class PersonHolderTest {
 
 
     }
-
     @Test
     public void delete() {
         NameChecker ch = new NameChecker();
         Comparator cmp = new NameComparator();
-        Sorter srt = new Buble(cmp);
-        PersonHolder ph1 = new PersonHolder(srt);
+        //Sorter srt = new Buble(cmp);
+        PersonHolder ph1 = new PersonHolder();
         Person P1 = new Person("Ax Dun", new LocalDate(1998, 02, 5));
         System.out.println(ch.check(P1, "Ax Dun"));
         Person P2 = new Person("Ciri", new LocalDate(1963,11,14));

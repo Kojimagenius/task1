@@ -21,7 +21,7 @@ public class bubleTest {
         arr2[0] = P2;
         arr2[1] = P3;
         arr2[2] = P1;
-        test.Sort(arr1);
+        test.Sort(arr1, new NameComparator());
         assertEquals(arr1,arr2);
 
     }

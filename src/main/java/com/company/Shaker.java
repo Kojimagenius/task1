@@ -1,10 +1,7 @@
 package com.company;
 
 public class Shaker implements Sorter {
-    Shaker(Comparator cmp)
-    {
 
-    }
     Shaker(){}
     public void Sort(Person[] arr, Comparator cmp)
     {

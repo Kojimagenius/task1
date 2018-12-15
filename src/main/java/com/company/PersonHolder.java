@@ -8,7 +8,6 @@ public class PersonHolder {
     private static Logger log = Logger.getLogger(PersonHolder.class.getName());
     private int counter;
     private Person mas[];
-    //logger
     /**
      * сортировщик холдера {@link Sorter}
      */
@@ -40,8 +39,16 @@ public class PersonHolder {
     }
     public void delete(int Index)
     {
-        log.debug("Deleting person " + mas[Index].getName());
-        Person temp[] = new Person[counter-1];
+        try {
+            log.debug("Deleting person " + mas[Index].getName());
+
+        }catch(NullPointerException e)
+        {e.printStackTrace();}
+        Person temp[];
+        if(counter != 1)
+         temp = new Person[counter-1];
+        else
+            temp = new Person[1];
         for(int i = 0; i < counter-1; i++)
         {
             if(i == Index)
@@ -98,15 +105,7 @@ public class PersonHolder {
         }
         return holder;
     }
-   /* Person[] search(LocalDate Birthday)
-    {
-        log.debug("Searching for person with name " + str);
-        Person temp[] = new Person[counter/2];
 
-        for(int i = 0; i < counter; i++)
-            if (mas[i].getDateOfBirth().compareTo(Birthday) == 0) return temp;
-        return null;
-    }*/
 
     PersonHolder(Sorter srt)
     {
@@ -114,6 +113,10 @@ public class PersonHolder {
         counter = 0;
         mas = null;
     }
-    PersonHolder(){}
+    PersonHolder(){
+        counter = 0;
+        mas = new Person[0];
+        Injector.inject(this);
+    }
 
 }
